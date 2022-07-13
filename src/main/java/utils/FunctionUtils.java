@@ -49,6 +49,7 @@ public class FunctionUtils {
     static BiFunction<Product, Integer, Optional<Bid>> getHighestBid = (product, year) ->
             Stream.of(product)
                     .flatMap(p -> p.getBids() != null ? p.getBids().stream() : Stream.empty())
+                    .filter(b->b.getCreatedAt().getYear()==year)
                     .sorted((b1, b2) -> b2.getBidValue() != 0.0 && b1.getBidValue() != 0.0 ? (int) (b2.getBidValue() - b1.getBidValue()) : 0)
                     .findFirst();
 
@@ -96,7 +97,7 @@ public class FunctionUtils {
             .sorted((p1, p2) ->
                     (int) (p2.getImages().stream().count() - p1.getImages().stream().count()))
             .map(p -> p.getUser()).toList()
-            .stream().limit(2)
+            .stream().limit(k)
             .collect(toList())
     );
 
@@ -104,12 +105,13 @@ public class FunctionUtils {
     public static TriFunction<Marketplace, Integer, LocalDate, Optional<List<User>>> getTopKUSerWhoseProductExpiredOnYDateAddedToWishList
             = (market, k, localDate) -> Optional.of(Stream.of(market)
             .flatMap(m -> m.getProducts() != null ? m.getProducts().stream() : Stream.empty())
-            .filter(p -> localDate.isAfter(p.getExpiryDate()))
+
             .flatMap(p -> p.getWishLists() != null ? p.getWishLists().stream() : Stream.empty())
+            .filter(w->w.getProduct().getExpiryDate().isBefore(localDate))
             .map(w -> w.getProduct())
             .map(p -> p.getUser())
             .distinct()
-            .limit(2)
+            .limit(k)
             .collect(toList()));
 
     // 8. Total comments in particular user's product in a Y year.
@@ -117,6 +119,7 @@ public class FunctionUtils {
             Stream.of(marketplace)
                     .flatMap(m -> m.getProducts() != null ? m.getProducts().stream() : Stream.empty())
                     .flatMap(p -> p.getComments() != null ? p.getComments().stream() : Stream.empty())
+                    .filter(c->c.getCreatedAt().getYear()==year)
                     .collect(Collectors.groupingBy(c -> c.getProduct().getUser()))
                     .entrySet().stream()
                     .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
@@ -141,6 +144,7 @@ public class FunctionUtils {
                     .flatMap(m -> m.getProducts() != null ? m.getProducts().stream() : Stream.empty())
                     .filter(p -> p.isNegotiable())
                     .flatMap(p -> p.getComments() != null ? p.getComments().stream() : Stream.empty())
+                    .filter(c->c.getCreatedAt().getYear()==year)
                     .collect(Collectors.groupingBy(c -> c.getUser()))
                     .entrySet()
                     .stream()
