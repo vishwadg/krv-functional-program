@@ -202,18 +202,18 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", isNegotiable=" + isNegotiable +
-                ", isBiddable=" + isBiddable +
-                ", addedDate=" + addedDate +
-                ", expiryDate=" + expiryDate +
-                ", productStatus=" + productStatus +
-                ", views=" + views +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
+                "\n\tid=" + id +
+                "\n\tname='" + name +
+                "\n\tdescription='" + description +
+                "\n\tprice=" + price +
+                "\n\tisNegotiable=" + isNegotiable +
+                "\n\tisBiddable=" + isBiddable +
+                "\n\taddedDate=" + addedDate +
+                "\n\texpiryDate=" + expiryDate +
+                "\n\tproductStatus=" + productStatus +
+                "\n\tviews=" + views +
+                "\n\tlatitude=" + latitude +
+                "\n\tlongitude=" + longitude +
                 '}';
     }
 }

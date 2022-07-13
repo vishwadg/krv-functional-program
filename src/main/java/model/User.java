@@ -19,10 +19,11 @@ public class User {
     private List<WishList> wishLists;
 
     private List<Product> products;
+
     public User() {
     }
 
-    public User(Long id,String firstName, String lastName, String email, String country, String state, String city, Integer zip,
+    public User(Long id, String firstName, String lastName, String email, String country, String state, String city, Integer zip,
                 Double userLat, Double userLong) {
         this.id = id;
         this.firstName = firstName;
@@ -139,16 +140,16 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", country='" + country + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", zip=" + zip +
-                ", userLat=" + userLat +
-                ", userLong=" + userLong +
-                ", comments=" + comments +
+                "\n\tfirstName= " + firstName + '\n' +
+                "\tlastName= " + lastName + '\n' +
+                "\temail= " + email + '\n' +
+                "\tcountry= " + country + '\n' +
+//                ", state='" + state + '\'' +
+//                ", city='" + city + '\'' +
+//                ", zip=" + zip +
+//                ", userLat=" + userLat +
+//                ", userLong=" + userLong +
+                "\tcomments=" + comments +
                 '}';
     }
 

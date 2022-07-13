@@ -12,7 +12,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long id,String content, Product product, User user, LocalDate createdAt) {
+    public Comment(Long id, String content, Product product, User user, LocalDate createdAt) {
         this.id = id;
         this.content = content;
         this.product = product;
@@ -59,10 +59,10 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "id=" + id +
-                ", content='" + content + '\'' +
-                ", product=" + product +
-                ", createdAt=" + createdAt +
+                "\n\t\tid= " + id + "\n" +
+                "\t\tcontent= " + content + "\n" +
+//                "\t\tproduct= " + product + "\n" +
+                "\t\tcreatedAt= " + createdAt + "\n" +
                 '}';
     }
 }

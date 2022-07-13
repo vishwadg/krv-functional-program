@@ -1,4 +1,6 @@
 import model.*;
+import netscape.javascript.JSObject;
+import org.json.JSONObject;
 import utils.FunctionUtils;
 import utils.KRVData;
 
@@ -27,13 +29,13 @@ public class Main {
                     "11.\tUsers Product with at least K Comments\n" +
                     "12.\tTop K users whose product sold in 2022\n" +
                     "13.\tMost top K expensive biddable product added to wishlist\n" +
-                    "14.\tTop K bidders in particular category\n\n");
+                    "14.\tTop K bidders in Electronics category\n\n");
 
             Scanner myScan = new Scanner(System.in);
             check = myScan.nextLine();
             Scanner uScan = new Scanner(System.in);
             int uTopInput, uYearInt;
-            try{
+            try {
                 switch (check) {
                     case "1":
                         System.out.println("Please enter K value");
@@ -53,7 +55,7 @@ public class Main {
                         uTopInput = uScan.nextInt();
 //                    System.out.println("Please enter Y year value(eg.2022)");
 //                    uYearInt = uScan.nextInt();
-                        if (uTopInput < 1 ) {
+                        if (uTopInput < 1) {
                             System.out.println("Input is not valid");
                         } else {
                             Optional<List<Product>> products = FunctionUtils.getKProductWithMaximumBids.apply(KRVData.marketplace, uTopInput, 2022);
@@ -209,7 +211,7 @@ public class Main {
                         }
                         break;
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("You have entered an incorrect value. Please try again with valid value.");
             }
         }

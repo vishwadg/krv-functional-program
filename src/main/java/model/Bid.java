@@ -63,11 +63,11 @@ public class Bid {
     @Override
     public String toString() {
         return "Bid{" +
-                "id=" + id +
-                ", bidValue=" + bidValue +
-                ", user=" + user +
-                ", product=" + product +
-                ", createdAt=" + createdAt +
+                "\t\nid= " + id +
+                "\t\nbidValue= " + bidValue +
+//                "\t\nuser=" + user +
+//                "\t\nproduct=" + product +
+                "\t\ncreatedAt =" + createdAt +
                 '}';
     }
 }
