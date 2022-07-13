@@ -1,6 +1,4 @@
 import model.*;
-import netscape.javascript.JSObject;
-import org.json.JSONObject;
 import utils.FunctionUtils;
 import utils.KRVData;
 
